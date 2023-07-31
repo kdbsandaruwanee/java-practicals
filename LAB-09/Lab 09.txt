@@ -1,0 +1,139 @@
+Question 01.
+
+1.public abstract class Container {
+    private double height;
+    private double radius;
+
+    public abstract double calculateVolume();
+
+    // Constructor
+    public Container(double height, double radius) {
+        this.height = height;
+        this.radius = radius;
+    }
+
+    // Getters and Setters
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+}
+
+2.public class CylindricalContainer extends Container {
+
+    // Constructor
+    public CylindricalContainer(double height, double radius) {
+        super(height, radius);
+    }
+
+    @Override
+    public double calculateVolume() {
+        double volume = Math.PI * getRadius() * getRadius() * getHeight();
+        return volume;
+    }
+}
+
+3.public class Main {
+    public static void main(String[] args) {
+        double height = 10.0; // Replace with desired height
+        double radius = 5.0; // Replace with desired radius
+
+        CylindricalContainer cylindricalContainer = new CylindricalContainer(height, radius);
+        double volume = cylindricalContainer.calculateVolume();
+        System.out.println("The volume of the cylindrical container is: " + volume);
+    }
+}
+
+Question 02.
+
+// PlayerController.java
+
+// Define the interface for player movement
+public interface PlayerController {
+    void moveUp();
+    void moveDown();
+    void moveLeft();
+    void moveRight();
+}
+
+
+// LifeGame.java
+
+import java.util.Scanner;
+
+public class LifeGame implements PlayerController {
+    public static void main(String[] args) {
+        // Create a new instance of the game
+        LifeGame game = new LifeGame();
+        // Start the game
+        game.startGame();
+    }
+
+    private void startGame() {
+        System.out.println("Welcome to the 'Life' RPG Game!");
+
+        Scanner scanner = new Scanner(System.in);
+        char input;
+        boolean running = true;
+
+        while (running) {
+            System.out.println("Press 'W' to move up, 'S' to move down, 'A' to move left, 'D' to move right, or 'Q' to quit.");
+            input = scanner.next().toUpperCase().charAt(0);
+
+            switch (input) {
+                case 'W':
+                    moveUp();
+                    break;
+                case 'S':
+                    moveDown();
+                    break;
+                case 'A':
+                    moveLeft();
+                    break;
+                case 'D':
+                    moveRight();
+                    break;
+                case 'Q':
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid input. Please try again.");
+                    break;
+            }
+        }
+
+        System.out.println("Game over. Thank you for playing!");
+        scanner.close();
+    }
+
+    @Override
+    public void moveUp() {
+        System.out.println("Moving up...");
+    }
+
+    @Override
+    public void moveDown() {
+        System.out.println("Moving down...");
+    }
+
+    @Override
+    public void moveLeft() {
+        System.out.println("Moving left...");
+    }
+
+    @Override
+    public void moveRight() {
+        System.out.println("Moving right...");
+    }
+}

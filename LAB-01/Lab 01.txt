@@ -1,0 +1,51 @@
+class Item {
+    protected int location;
+    protected String description;
+
+    public Item(int location, String description) {
+        this.location = location;
+        this.description = description;
+    }
+
+    // Getter and Setter methods for location
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
+    // Getter and Setter methods for description
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+part01
+
+}
+
+class Monster extends Item {
+    public Monster(int location, String description) {
+        super(location, description);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an instance of the Monster class
+        Monster monster = new Monster(1, "Scary Monster");
+
+        // Use the getter methods to access the instance variables
+        int monsterLocation = monster.getLocation();
+        String monsterDescription = monster.getDescription();
+
+        // Print the values to verify
+        System.out.println("Monster Location: " + monsterLocation);
+        System.out.println("Monster Description: " + monsterDescription);
+    }
+}
+

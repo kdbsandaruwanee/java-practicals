@@ -1,0 +1,133 @@
+Question 01.
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class CreateEmployeeTable {
+
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/your_database_name";
+        String username = "your_username";
+        String password = "your_password";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             Statement statement = connection.createStatement()) {
+
+            String query = "CREATE TABLE Employee (" +
+                    "ID INT PRIMARY KEY," +
+                    "Name VARCHAR(50) NOT NULL," +
+                    "Age INT," +
+                    "Gender VARCHAR(10)," +
+                    "DepartmentNo INT" +
+                    ")";
+            statement.executeUpdate(query);
+            System.out.println("Employee table created successfully.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class EmployeeUI extends JFrame {
+
+    private JTextField idField;
+    private JTextField nameField;
+    private JTextField ageField;
+    private JTextField genderField;
+    private JTextField departmentNoField;
+
+    public EmployeeUI() {
+        super("Employee Database");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+        setLayout(new GridLayout(6, 2));
+
+        JLabel idLabel = new JLabel("ID:");
+        idField = new JTextField();
+        JLabel nameLabel = new JLabel("Name:");
+        nameField = new JTextField();
+        JLabel ageLabel = new JLabel("Age:");
+        ageField = new JTextField();
+        JLabel genderLabel = new JLabel("Gender:");
+        genderField = new JTextField();
+        JLabel departmentNoLabel = new JLabel("Department No:");
+        departmentNoField = new JTextField();
+
+        JButton insertButton = new JButton("Insert");
+        insertButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                insertEmployeeRecord();
+            }
+        });
+
+        add(idLabel);
+        add(idField);
+        add(nameLabel);
+        add(nameField);
+        add(ageLabel);
+        add(ageField);
+        add(genderLabel);
+        add(genderField);
+        add(departmentNoLabel);
+        add(departmentNoField);
+        add(new JLabel());
+        add(insertButton);
+
+        setVisible(true);
+    }
+
+    private void insertEmployeeRecord() {
+        String url = "jdbc:mysql://localhost:3306/your_database_name";
+        String username = "your_username";
+        String password = "your_password";
+
+        String id = idField.getText();
+        String name = nameField.getText();
+        String age = ageField.getText();
+        String gender = genderField.getText();
+        String departmentNo = departmentNoField.getText();
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "INSERT INTO Employee (ID, Name, Age, Gender, DepartmentNo) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, Integer.parseInt(id));
+            preparedStatement.setString(2, name);
+            preparedStatement.setInt(3, Integer.parseInt(age));
+            preparedStatement.setString(4, gender);
+            preparedStatement.setInt(5, Integer.parseInt(departmentNo));
+            preparedStatement.executeUpdate();
+
+            JOptionPane.showMessageDialog(this, "Employee record inserted successfully.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error occurred while inserting the record.");
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new EmployeeUI();
+            }
+        });
+    }
+}
+
+
+Question 02.
+

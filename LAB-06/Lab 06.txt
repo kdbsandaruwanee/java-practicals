@@ -1,0 +1,18 @@
+public interface MyFirstInterface {
+    int x = 10; // This variable is implicitly public static final
+    
+    void display(); // This method is implicitly abstract
+}
+
+
+implement
+
+public class InterfaceImplemented implements MyFirstInterface {
+    
+    @Override
+    public void display() {
+        
+
+        System.out.println("Value of x: " + x); // It's possible to access the value of "x."
+    }
+}

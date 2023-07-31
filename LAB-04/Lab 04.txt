@@ -1,0 +1,84 @@
+exercise 01.
+
+public class Employee {
+    private int empID;
+    private String empName;
+    private String empDesignation;
+
+    // Getter and Setter for empID
+    public int getEmpID() {
+        return empID;
+    }
+
+    public void setEmpID(int empID) {
+        this.empID = empID;
+    }
+
+    // Getter and Setter for empName
+    public String getEmpName() {
+        return empName;
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
+
+    // Getter and Setter for empDesignation
+    public String getEmpDesignation() {
+        return empDesignation;
+    }
+
+    public void setEmpDesignation(String empDesignation) {
+        this.empDesignation = empDesignation;
+    }
+}
+
+public class Employee {
+    public static void main(String[] args) {
+        // Creating objects for Mr. Bogdan and Ms. Bird
+        Employee mrBogdan = new Employee();
+        Employee msBird = new Employee();
+
+        // Setting values using setters
+        mrBogdan.setEmpID(1001);
+        mrBogdan.setEmpName("Mr. Bogdan");
+        mrBogdan.setEmpDesignation("Software Engineer");
+
+        msBird.setEmpID(1002);
+        msBird.setEmpName("Ms. Bird");
+        msBird.setEmpDesignation("Product Manager");
+
+        // Printing values using getters
+        System.out.println("Mr. Bogdan's details:");
+        System.out.println("Employee ID: " + mrBogdan.getEmpID());
+        System.out.println("Employee Name: " + mrBogdan.getEmpName());
+        System.out.println("Employee Designation: " + mrBogdan.getEmpDesignation());
+
+        System.out.println("\nMs. Bird's details:");
+        System.out.println("Employee ID: " + msBird.getEmpID());
+        System.out.println("Employee Name: " + msBird.getEmpName());
+        System.out.println("Employee Designation: " + msBird.getEmpDesignation());
+    }
+}
+
+exercise 02.
+
+public class Inheritance {
+
+    public static void main(String[] args) {
+
+        SuperB b = new SuperB(); // Create an instance of SuperB
+        b.setIt(2); // Set x to 2
+        b.increase(); // Increment x by 1 (x = 3)
+        b.triple(); // Triple x (x = 9)
+
+        System.out.println(b.returnIt()); // Print the value of x, which is 9
+    }
+}
+
+output=9
+
+
+
+
+

@@ -1,0 +1,25 @@
+Lab 01
+part 03
+
+01.Real-world objects contain attributes and methods.
+
+02.A software object's state is stored in instance variables.
+
+03.A software object's behavior is exposed through methods.
+
+04.Hiding internal data from the outside world, and accessing it only through publicly exposed methods is known as encapsulation.
+
+05.A blueprint for a software object is called a class.
+
+06.Common behavior can be defined in a parent class and inherited into a child class using the extends keyword.
+
+07.A collection of methods with no implementation is called an interface.
+
+08.A namespace that organizes classes and interfaces by functionality is called a package.
+
+09.The term API stands for Application Programming Interface.
+
+
+
+
+

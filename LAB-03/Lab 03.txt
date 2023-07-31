@@ -1,0 +1,70 @@
+public class Employee {
+    private String name;
+    private int age;
+    private double basicSalary;
+    private double bonus;
+
+    // Getters and setters for Name, Age, Basic Salary, and Bonus
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getBasicSalary() {
+        return basicSalary;
+    }
+
+    public void setBasicSalary(double basicSalary) {
+        this.basicSalary = basicSalary;
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+
+    // Method to calculate Bonus Amount
+    public double calculateBonusAmount() {
+        return basicSalary + bonus;
+    }
+}
+
+
+public class Employee {
+    public static void main(String[] args) {
+        Employee employee = new Employee();
+
+        // Set values using setters
+        employee.setName("Bogdan");
+        employee.setBasicSalary(50000);
+        employee.setBonus(10000);
+
+        // Retrieve values using getters
+        String name = employee.getName();
+        double basicSalary = employee.getBasicSalary();
+        double bonus = employee.getBonus();
+
+        // Calculate Bonus Amount
+        double bonusAmount = employee.calculateBonusAmount();
+
+        // Print the output
+        System.out.println("Employee Name: " + name);
+        System.out.println("Basic Salary: " + basicSalary);
+        System.out.println("Bonus: " + bonus);
+        System.out.println("Bonus Amount: " + bonusAmount);
+    }
+}

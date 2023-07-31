@@ -1,0 +1,228 @@
+EXERCIES 01
+
+// BankAccount.java
+abstract class BankAccount {
+    private int accountNumber;
+    private double balance;
+
+    public BankAccount(int accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    // Getter for accountNumber
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    // Setter for accountNumber
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    // Getter for balance
+    public double getBalance() {
+        return balance;
+    }
+
+    // Setter for balance
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    // Abstract method for calculating interest
+    public abstract double calculateInterest();
+}
+
+// SavingsAccount.java
+class SavingsAccount extends BankAccount {
+    private final double interestRate = 0.12; // 12% interest rate for savings account
+
+    public SavingsAccount(int accountNumber, double balance) {
+        super(accountNumber, balance);
+    }
+
+    @Override
+    public double calculateInterest() {
+        return getBalance() * interestRate;
+    }
+}
+
+// CheckingAccount.java
+class CheckingAccount extends BankAccount {
+    private final double interestRate = 0.02; // 2% interest rate for checking account
+
+    public CheckingAccount(int accountNumber, double balance) {
+        super(accountNumber, balance);
+    }
+
+    @Override
+    public double calculateInterest() {
+        return getBalance() * interestRate;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating instances of SavingsAccount and CheckingAccount
+        SavingsAccount savingsAccount = new SavingsAccount(1, 20000000); // 20 million in savings account
+        CheckingAccount checkingAccount = new CheckingAccount(2, 1000000); // 1 million in checking account
+
+        // Calculating interest for both accounts
+        double savingsInterest = savingsAccount.calculateInterest();
+        double checkingInterest = checkingAccount.calculateInterest();
+
+        System.out.println("Interest for Savings Account: $" + savingsInterest);
+        System.out.println("Interest for Checking Account: $" + checkingInterest);
+    }
+}
+
+EXERCIES 02.
+
+// Shape interface
+interface Shape {
+    double calculateArea();
+    double calculatePerimeter();
+}
+
+// Circle class
+class Circle implements Shape {
+    private double radius;
+
+    // Constructor
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Getter and Setter for radius
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    // Implementing the Shape interface methods
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+// Rectangle class
+class Rectangle implements Shape {
+    private double length;
+    private double width;
+
+    // Constructor
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    // Getters and Setters for length and width
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    // Implementing the Shape interface methods
+    @Override
+    public double calculateArea() {
+        return length * width;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * (length + width);
+    }
+}
+
+// Triangle class
+class Triangle implements Shape {
+    private double sideA;
+    private double sideB;
+    private double sideC;
+
+    // Constructor
+    public Triangle(double sideA, double sideB, double sideC) {
+        this.sideA = sideA;
+        this.sideB = sideB;
+        this.sideC = sideC;
+    }
+
+    // Getters and Setters for the sides
+    public double getSideA() {
+        return sideA;
+    }
+
+    public void setSideA(double sideA) {
+        this.sideA = sideA;
+    }
+
+    public double getSideB() {
+        return sideB;
+    }
+
+    public void setSideB(double sideB) {
+        this.sideB = sideB;
+    }
+
+    public double getSideC() {
+        return sideC;
+    }
+
+    public void setSideC(double sideC) {
+        this.sideC = sideC;
+    }
+
+    // Implementing the Shape interface methods
+    @Override
+    public double calculateArea() {
+        // Using Heron's formula to calculate the area of the triangle
+        double s = (sideA + sideB + sideC) / 2;
+        return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return sideA + sideB + sideC;
+    }
+}
+
+// Example usage
+public class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle(5);
+        System.out.println("Circle area: " + circle.calculateArea());
+        System.out.println("Circle perimeter: " + circle.calculatePerimeter());
+
+        Rectangle rectangle = new Rectangle(4, 6);
+        System.out.println("Rectangle area: " + rectangle.calculateArea());
+        System.out.println("Rectangle perimeter: " + rectangle.calculatePerimeter());
+
+        Triangle triangle = new Triangle(3, 4, 5);
+        System.out.println("Triangle area: " + triangle.calculateArea());
+        System.out.println("Triangle perimeter: " + triangle.calculatePerimeter());
+    }
+}
+
+
+
